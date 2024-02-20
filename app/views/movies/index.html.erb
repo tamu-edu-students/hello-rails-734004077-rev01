@@ -71,20 +71,7 @@
 #   });
 # </script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sortable Movies Table</title>
-  <style>
-    body {
-      background-color: lightgray; /* Set background color to light gray */
-      border: 5px solid black; /* Add a black border to the body */
-    }
-  </style>
-</head>
-<body>
+<%= render 'styling' %>
 
 <table id="movies-table" data-sort-column="" data-sort-order="">
   <!-- Your table content here -->
@@ -157,6 +144,3 @@
     }
   });
 </script>
-
-</body>
-</html>
