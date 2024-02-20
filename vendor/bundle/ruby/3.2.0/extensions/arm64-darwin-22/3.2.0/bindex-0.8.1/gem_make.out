@@ -1,0 +1,18 @@
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/pankajkumartiwari/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-4sle69 sitelibdir\=./.gem.20240220-20389-4sle69 clean
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-4sle69 sitelibdir\=./.gem.20240220-20389-4sle69
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-4sle69 sitelibdir\=./.gem.20240220-20389-4sle69 install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20240220-20389-4sle69/skiptrace/internal
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-4sle69 sitelibdir\=./.gem.20240220-20389-4sle69 clean
