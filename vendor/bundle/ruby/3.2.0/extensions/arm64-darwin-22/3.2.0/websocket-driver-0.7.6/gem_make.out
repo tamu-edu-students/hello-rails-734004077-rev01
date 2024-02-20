@@ -1,0 +1,18 @@
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/Users/pankajkumartiwari/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-d43cr5 sitelibdir\=./.gem.20240220-20389-d43cr5 clean
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-d43cr5 sitelibdir\=./.gem.20240220-20389-d43cr5
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-d43cr5 sitelibdir\=./.gem.20240220-20389-d43cr5 install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20240220-20389-d43cr5
+
+current directory: /Users/pankajkumartiwari/Documents/GitHub/hello-rails-734004077-rev01/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240220-20389-d43cr5 sitelibdir\=./.gem.20240220-20389-d43cr5 clean
