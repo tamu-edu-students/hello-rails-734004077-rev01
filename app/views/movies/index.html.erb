@@ -76,125 +76,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sortable Table</title>
+  <title>Sortable Movies Table</title>
   <style>
     body {
-      background-color: #f0f0f0; /* Light gray background color */
-      font-family: Arial, sans-serif; /* Change font family */
-      color: #333; /* Dark gray text color */
-      margin: 0;
-      padding: 20px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      border: 1px solid #ddd; /* Add border to table */
-    }
-
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-
-    th button {
-      background-color: #4CAF50; /* Green */
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    th button:hover {
-      background-color: #45a049; /* Darker green on hover */
-    }
-
-    th button:active {
-      background-color: #3e8e41; /* Even darker green when clicked */
-    }
-
-    #sorted-column-info {
-      margin-top: 20px;
+      background-color: lightgray; /* Set background color to light gray */
+      border: 5px solid black; /* Add a black border to the body */
     }
   </style>
 </head>
 <body>
-  <table id="movies-table" data-sort-column="" data-sort-order="">
-    <!-- Your table content here -->
-  </table>
 
-  <p id="sorted-column-info"></p>
+<table id="movies-table" data-sort-column="" data-sort-order="">
+  <!-- Your table content here -->
+</table>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const table = document.getElementById('movies-table');
-      const headers = table.querySelectorAll('th button');
+<p id="sorted-column-info"></p>
 
-      headers.forEach(header => {
-        header.addEventListener('click', () => {
-          const column = header.dataset.sort;
-          sortTable(table, column);
-        });
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const table = document.getElementById('movies-table');
+    const headers = table.querySelectorAll('th button');
+
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const column = header.dataset.sort;
+        sortTable(table, column);
+      });
+    });
+
+    function sortTable(table, column) {
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      const isDescending = table.dataset.sortColumn === column && table.dataset.sortOrder === 'desc';
+
+      rows.sort((a, b) => {
+        const aValue = a.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
+        const bValue = b.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
+
+        return isDescending ? bValue.localeCompare(aValue) : aValue.localeCompare(bValue);
       });
 
-      function sortTable(table, column) {
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr'));
-
-        const isDescending = table.dataset.sortColumn === column && table.dataset.sortOrder === 'desc';
-
-        rows.sort((a, b) => {
-          const aValue = a.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
-          const bValue = b.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
-
-          return isDescending ? bValue.localeCompare(aValue) : aValue.localeCompare(bValue);
-        });
-
-        while (tbody.firstChild) {
-          tbody.removeChild(tbody.firstChild);
-        }
-
-        rows.forEach(row => {
-          tbody.appendChild(row);
-        });
-
-        table.dataset.sortColumn = column;
-        table.dataset.sortOrder = isDescending ? 'asc' : 'desc';
-
-        updateSortedColumnText(column, isDescending);
-        highlightSortedColumn(column, isDescending);
+      while (tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild);
       }
 
-      function getHeaderIndex(columnName) {
-        const headers = Array.from(table.querySelectorAll('th button'));
-        return headers.findIndex(header => header.dataset.sort === columnName);
-      }
+      rows.forEach(row => {
+        tbody.appendChild(row);
+      });
 
-      function updateSortedColumnText(column, isDescending) {
-        const sortOrder = isDescending ? 'descending' : 'ascending';
-        document.getElementById('sorted-column-info').textContent = `The ${column} is sorted in ${sortOrder} order.`;
-      }
+      table.dataset.sortColumn = column;
+      table.dataset.sortOrder = isDescending ? 'asc' : 'desc';
 
-      function highlightSortedColumn(column, isDescending) {
-        headers.forEach(header => {
-          if (header.dataset.sort === column) {
-            if (isDescending) {
-              header.style.backgroundColor = '#FFD700'; /* Gold */
-            } else {
-              header.style.backgroundColor = '#00CED1'; /* Dark Turquoise */
-            }
+      updateSortedColumnText(column, isDescending);
+      highlightSortedColumn(column, isDescending);
+    }
+
+    function getHeaderIndex(columnName) {
+      const headers = Array.from(table.querySelectorAll('th button'));
+      return headers.findIndex(header => header.dataset.sort === columnName);
+    }
+
+    function updateSortedColumnText(column, isDescending) {
+      const sortOrder = isDescending ? 'descending' : 'ascending';
+      document.getElementById('sorted-column-info').textContent = `The ${column} is sorted in ${sortOrder} order.`;
+    }
+
+    function highlightSortedColumn(column, isDescending) {
+      headers.forEach(header => {
+        if (header.dataset.sort === column) {
+          if (isDescending) {
+            header.style.backgroundColor = 'yellow';
           } else {
-            header.style.backgroundColor = ''; // Reset other headers
+            header.style.backgroundColor = 'green';
           }
-        });
-      }
-    });
-  </script>
+        } else {
+          header.style.backgroundColor = ''; // Reset other headers
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
