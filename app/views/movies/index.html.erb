@@ -1,29 +1,79 @@
-<p style="color: green"><%= notice %></p>
+# <p style="color: green"><%= notice %></p>
 
-<h1>Movies</h1>
+# <h1>Movies</h1>
 
-<table id="movies-table">
-  <thead>
-    <tr>
-      <th><button class="sort-btn" data-sort="title">Title</button></th>
-      <th><button class="sort-btn" data-sort="rating">Rating</button></th>
-      <th><button class="sort-btn" data-sort="release_date">Release Date</button></th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.release_date %></td>
-        <td><%= link_to "Show", movie %></td>
-      </tr>
-    <% end %>
-  </tbody>
+# <table id="movies-table">
+#   <thead>
+#     <tr>
+#       <th><button class="sort-btn" data-sort="title">Title</button></th>
+#       <th><button class="sort-btn" data-sort="rating">Rating</button></th>
+#       <th><button class="sort-btn" data-sort="release_date">Release Date</button></th>
+#       <th>Action</th>
+#     </tr>
+#   </thead>
+#   <tbody>
+#     <% @movies.each do |movie| %>
+#       <tr>
+#         <td><%= movie.title %></td>
+#         <td><%= movie.rating %></td>
+#         <td><%= movie.release_date %></td>
+#         <td><%= link_to "Show", movie %></td>
+#       </tr>
+#     <% end %>
+#   </tbody>
+# </table>
+
+# <%= link_to "New movie", new_movie_path %>
+
+# <script>
+#   document.addEventListener('DOMContentLoaded', function() {
+#     const table = document.getElementById('movies-table');
+#     const headers = table.querySelectorAll('th button');
+
+#     headers.forEach(header => {
+#       header.addEventListener('click', () => {
+#         const column = header.dataset.sort;
+#         sortTable(table, column);
+#       });
+#     });
+
+#     function sortTable(table, column) {
+#       const tbody = table.querySelector('tbody');
+#       const rows = Array.from(tbody.querySelectorAll('tr'));
+
+#       const isDescending = table.dataset.sortColumn === column && table.dataset.sortOrder === 'desc';
+
+#       rows.sort((a, b) => {
+#         const aValue = a.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
+#         const bValue = b.querySelector(`td:nth-child(${getHeaderIndex(column) + 1})`).innerText;
+
+#         return isDescending ? bValue.localeCompare(aValue) : aValue.localeCompare(bValue);
+#       });
+
+#       while (tbody.firstChild) {
+#         tbody.removeChild(tbody.firstChild);
+#       }
+
+#       rows.forEach(row => {
+#         tbody.appendChild(row);
+#       });
+
+#       table.dataset.sortColumn = column;
+#       table.dataset.sortOrder = isDescending ? 'asc' : 'desc';
+#     }
+
+#     function getHeaderIndex(columnName) {
+#       const headers = Array.from(table.querySelectorAll('th button'));
+#       return headers.findIndex(header => header.dataset.sort === columnName);
+#     }
+#   });
+# </script>
+
+<table id="movies-table" data-sort-column="" data-sort-order="">
+  <!-- Your table content here -->
 </table>
 
-<%= link_to "New movie", new_movie_path %>
+<p id="sorted-column-info"></p>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -60,12 +110,33 @@
 
       table.dataset.sortColumn = column;
       table.dataset.sortOrder = isDescending ? 'asc' : 'desc';
+
+      updateSortedColumnText(column, isDescending);
+      highlightSortedColumn(column, isDescending);
     }
 
     function getHeaderIndex(columnName) {
       const headers = Array.from(table.querySelectorAll('th button'));
       return headers.findIndex(header => header.dataset.sort === columnName);
     }
+
+    function updateSortedColumnText(column, isDescending) {
+      const sortOrder = isDescending ? 'descending' : 'ascending';
+      document.getElementById('sorted-column-info').textContent = `The ${column} is sorted in ${sortOrder} order.`;
+    }
+
+    function highlightSortedColumn(column, isDescending) {
+      headers.forEach(header => {
+        if (header.dataset.sort === column) {
+          if (isDescending) {
+            header.style.backgroundColor = 'yellow';
+          } else {
+            header.style.backgroundColor = 'green';
+          }
+        } else {
+          header.style.backgroundColor = ''; // Reset other headers
+        }
+      });
+    }
   });
 </script>
-
