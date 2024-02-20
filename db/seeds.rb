@@ -34,4 +34,5 @@ more_movies.each do |movie|
   Movie.create!(movie)
 end
 #data-seeded
+#db_deleted
 
