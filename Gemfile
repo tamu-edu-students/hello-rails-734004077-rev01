@@ -45,8 +45,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'sqlite3'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri windows ]
 end
+
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -67,4 +69,8 @@ end
 
 group :production do
   gem 'pg' # for Heroku deployment
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
