@@ -1,18 +1,3 @@
-# <p style="color: green"><%= notice %></p>
-
-# <h1>Movies</h1>
-
-# <div id="movies">
-#   <% @movies.each do |movie| %>
-#     <%= render movie %>
-#     <p>
-#       <%= link_to "Show this movie", movie %>
-#     </p>
-#   <% end %>
-# </div>
-
-# <%= link_to "New movie", new_movie_path %>
-
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
@@ -23,7 +8,7 @@
       <th>Title</th>
       <th>Rating</th>
       <th>Release Date</th>
-      <th>Action</th> <!-- If you want an action column -->
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -32,7 +17,7 @@
         <td><%= movie.title %></td>
         <td><%= movie.rating %></td>
         <td><%= movie.release_date %></td>
-        <td><%= link_to "Show", movie %></td> <!-- Add actions if needed -->
+        <td><%= link_to "Show", movie %></td>
       </tr>
     <% end %>
   </tbody>
